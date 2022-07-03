@@ -5,9 +5,10 @@ LABEL description="Kozos のビルド環境"
 
 RUN apt-get update \
    apt-get upgrade -y\
-   apt-get install curl gcc 
+   apt-get install curl gcc make 
 
-RUN wget http://kozos.jp/books/makeos/binutils-2.19.1.tar.gz /tmp \
+RUN cd /tmp\
+   wget http://kozos.jp/books/makeos/binutils-2.19.1.tar.gz  \
    tar xvf /tmp/binutils-2.19.tar.gz\
    cd /tmp/binutils-2.19\
    ./configure --target=h8300-elf --disable-nls \
@@ -15,7 +16,8 @@ RUN wget http://kozos.jp/books/makeos/binutils-2.19.1.tar.gz /tmp \
    make install
 
 
-RUN wget http://kozos.jp/books/makeos/gcc-3.4.6.tar.gz /tmp \
+RUN cd /tmp\
+   wget http://kozos.jp/books/makeos/gcc-3.4.6.tar.gz  \
    tar xvf /tmp/gcc-3.4.6.tar.gz \
    cd /tmp/gcc-3.4.6 \
    setenv SHELL /usr/local/bin/bash\
